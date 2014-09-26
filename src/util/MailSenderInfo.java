@@ -22,6 +22,16 @@ public class MailSenderInfo {
     // 邮件附件的文件名
     private String[] attachFileNames={};
 
+    private boolean withAttachment=true;
+    public boolean isWithAttachment() {
+        return withAttachment;
+    }
+
+    public void setWithAttachment(boolean withAttachment) {
+        this.withAttachment = withAttachment;
+    }
+
+
     public Properties getProperties(){
         Properties p = new Properties();
         p.put("mail.smtp.host", this.mailServerHost);

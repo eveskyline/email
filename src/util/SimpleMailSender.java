@@ -48,9 +48,8 @@ public class SimpleMailSender {
             String mailContent = mailInfo.getContent();
             mailMessage.setText(mailContent);
             //附件
-
             Multipart multipart=new MimeMultipart();
-            if(mailInfo.getAttachFileNames().length!=0){
+            if(mailInfo.isWithAttachment()){
                 for(int i=0;i<mailInfo.getAttachFileNames().length;i++) {
                     DataSource source = new FileDataSource(mailInfo.getAttachFileNames()[i]);
                     String name = source.getName();
@@ -60,6 +59,9 @@ public class SimpleMailSender {
                     bodyPart.setFileName(ss[ss.length-1]);
                     multipart.addBodyPart(bodyPart);
                 }
+                BodyPart bodyPart=new MimeBodyPart();
+                bodyPart.setContent(mailInfo.getContent(),"text/html");
+                multipart.addBodyPart(bodyPart);
                 mailMessage.setContent(multipart);
             }
 
