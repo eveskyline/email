@@ -7,8 +7,6 @@ public class test {
     public static void main(String[] args) {
         String s="/Users/taylor/Downloads/image.jpg";
         String[] ss=s.split("/");
-
-        System.out.println(ss[ss.length-1]);
     }
 }
 
